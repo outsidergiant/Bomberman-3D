@@ -11,6 +11,12 @@ public class ConcreteWallView : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        AddBorderConcreteWalls();
+        AddInnerConcreteWalls();
+    }
+
+    void AddBorderConcreteWalls()
+    {
         for (int i = 0; i <= tileNumberZ; i++)
         {
             for (int j = 0; j <= tileNumberX; j++)
@@ -21,7 +27,6 @@ public class ConcreteWallView : MonoBehaviour {
                 CheckHorizontalBorder(i, j, tileNumberZ);
             }
         }
-        AddInnerConcreteWalls();
     }
 
     void Clone(int x, int z)
