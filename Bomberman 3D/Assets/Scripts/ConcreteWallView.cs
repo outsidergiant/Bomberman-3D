@@ -15,10 +15,10 @@ public class ConcreteWallView : MonoBehaviour {
         {
             for (int j = 0; j <= tileNumberX; j++)
             {
-                CheckLeft(i, j);
-                CheckTop(i, j);
-                CheckRight(i, j);
-                CheckBottom(i, j);
+                CheckVerticalBorder(i, j, 0);
+                CheckHorizontalBorder(i, j, 0);
+                CheckVerticalBorder(i, j, tileNumberX);
+                CheckHorizontalBorder(i, j, tileNumberZ);
             }
         }
         AddInnerConcreteWalls();
@@ -30,38 +30,15 @@ public class ConcreteWallView : MonoBehaviour {
         wallTileClone.SetActive(true);
     }
 
-    void CheckLeft(int i, int j)
+    void CheckVerticalBorder(int i, int j, int index)
     {
-        if (j == 0)
-        {
-            Clone(j, i);
-        }
-    }
-
-    void CheckRight(int i, int j)
-    {
-        if (j == tileNumberX)
-        {
-            Clone(j, i);
-        }
-    }
-
-    void CheckTop(int i, int j)
-    {
-        if (i == 0)
-        {
-            Clone(j, i);
-        }
-    }
-
-    void CheckBottom(int i, int j)
-    {
-        if (i == tileNumberZ)
-        {
-            Clone(j, i);
-        }
+        if (j == index) Clone(j, i);
     }
     
+    void CheckHorizontalBorder(int i, int j, int index)
+    {
+        if (i == index) Clone(j, i);
+    }
 
     void AddInnerConcreteWalls()
     {
