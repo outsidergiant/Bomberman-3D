@@ -5,13 +5,13 @@ using UnityEngine;
 public class TileView : MonoBehaviour {
 
     public GameObject tile;
-    public int width;
-    public int height;
+    public int numberOfTilesX;
+    public int numberOfTilesZ;
 	// Use this for initialization
 	void Start () {
-		for (int i = 0; i < height; i++)
+		for (int i = 0; i < numberOfTilesZ; i++)
         {
-            for (int j = 0; j < width; j++)
+            for (int j = 0; j < numberOfTilesX; j++)
             {
                 GameObject tileClone = (GameObject)Instantiate(tile, new Vector3(j, 0, i), tile.transform.rotation);
                 tileClone.SetActive(true);
