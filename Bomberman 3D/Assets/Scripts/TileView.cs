@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileView : MonoBehaviour {
+public class TileView : MonoBehaviour
+{
 
     public GameObject tile;
-    public int numberOfTilesX;
-    public int numberOfTilesZ;
-	// Use this for initialization
-	void Start () {
-		for (int i = 0; i < numberOfTilesZ; i++)
+    private int numberOfTilesX = GlobalParameters.numberTilesX;
+    private int numberOfTilesZ = GlobalParameters.numberTilesZ;
+    // Use this for initialization
+    void Start()
+    {
+        for (int i = 0; i < numberOfTilesZ; i++)
         {
             for (int j = 0; j < numberOfTilesX; j++)
             {
@@ -17,10 +19,11 @@ public class TileView : MonoBehaviour {
                 tileClone.SetActive(true);
             }
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 }

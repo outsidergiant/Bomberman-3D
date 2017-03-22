@@ -2,38 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BorderWallView : MonoBehaviour {
+public class ConcreteWallView : MonoBehaviour {
 
     public GameObject borderWallTile;
-    public int tileNumberX;
-    public int tileNumberZ;
+    private int tileNumberX = GlobalParameters.numberTilesX;
+    private int tileNumberZ = GlobalParameters.numberTilesZ;
 
     // Use this for initialization
     void Start()
     {
-        for (int i = 0; i <= tileNumberX; i++)
-        {
-            GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(i, 0, 0), borderWallTile.transform.rotation);
-            borderWallTile.SetActive(true);
-        }
         for (int i = 0; i <= tileNumberZ; i++)
         {
-            GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(tileNumberX, 0, i), borderWallTile.transform.rotation);
-            borderWallTile.SetActive(true);
+            for (int j = 0; j <= tileNumberX; j++)
+            {
+                CheckLeft(i, j);
+                CheckTop(i, j);
+                CheckRight(i, j);
+                CheckBottom(i, j);
+            }
         }
-        for (int i = 0; i <= tileNumberX; i++)
-        {
-            GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(i, 0, tileNumberZ), borderWallTile.transform.rotation);
-            borderWallTile.SetActive(true);
-        }
-        for (int i = 0; i <= tileNumberZ; i++)
-        {
-            GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(0, 0, i), borderWallTile.transform.rotation);
-            borderWallTile.SetActive(true);
-        }
-
         AddInnerConcreteWalls();
     }
+
+    void Clone(int x, int z)
+    {
+        GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(x, 0, z), borderWallTile.transform.rotation);
+        wallTileClone.SetActive(true);
+    }
+
+    void CheckLeft(int i, int j)
+    {
+        if (j == 0)
+        {
+            Clone(j, i);
+        }
+    }
+
+    void CheckRight(int i, int j)
+    {
+        if (j == tileNumberX)
+        {
+            Clone(j, i);
+        }
+    }
+
+    void CheckTop(int i, int j)
+    {
+        if (i == 0)
+        {
+            Clone(j, i);
+        }
+    }
+
+    void CheckBottom(int i, int j)
+    {
+        if (i == tileNumberZ)
+        {
+            Clone(j, i);
+        }
+    }
+    
 
     void AddInnerConcreteWalls()
     {
@@ -42,7 +70,7 @@ public class BorderWallView : MonoBehaviour {
             for (int j = 2; j < tileNumberX; j += 2)
             {
                 GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(j, 0, i), borderWallTile.transform.rotation);
-                borderWallTile.SetActive(true);
+                wallTileClone.SetActive(true);
             }
         }
     }
