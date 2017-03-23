@@ -8,12 +8,17 @@ public class BrickWallView : MonoBehaviour {
     public int numberOfWalls;
     private float y = 0.5f;
     public string str = "HER";
-    private bool[,] wallMap;
+    public bool[,] wallMap;
 	// Use this for initialization
 	void Start () {
+        
+	}
+
+    void Awake()
+    {
         wallMap = new bool[GlobalParameters.numberTilesX, GlobalParameters.numberTilesZ];
         PlaceWalls();
-	}
+    }
 
     void PlaceWalls()
     {

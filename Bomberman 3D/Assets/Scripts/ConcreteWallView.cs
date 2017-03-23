@@ -7,7 +7,7 @@ public class ConcreteWallView : MonoBehaviour {
     public GameObject borderWallTile;
     private int tileNumberX = GlobalParameters.numberTilesX;
     private int tileNumberZ = GlobalParameters.numberTilesZ;
-    private float y = 0.5f;
+    //private float y = 0.5f;
     // Use this for initialization
     void Start()
     {
@@ -31,7 +31,7 @@ public class ConcreteWallView : MonoBehaviour {
 
     void Clone(int x, int z)
     {
-        GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(x, y, z), borderWallTile.transform.rotation);
+        GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(x, GlobalParameters.Y, z), borderWallTile.transform.rotation);
         wallTileClone.SetActive(true);
     }
 
