@@ -6,8 +6,8 @@ public class BrickWallView : MonoBehaviour {
 
     public GameObject brickWall;
     public int numberOfWalls;
-    public bool bob;
-
+    private float y = 0.5f;
+    public string str = "HER";
     private bool[,] wallMap;
 	// Use this for initialization
 	void Start () {
@@ -26,7 +26,7 @@ public class BrickWallView : MonoBehaviour {
             {
                 x = (int)Random.Range(1, GlobalParameters.numberTilesX - 1);
                 z = (int)Random.Range(1, GlobalParameters.numberTilesZ - 1);
-            } while (x % 2 == 0 && z % 2 == 0 && !wallMap[x, z]);
+            } while (x % 2 == 0 || z % 2 == 0 || wallMap[x, z]);
             wallMap[x, z] = true;
             Clone(x, z);
         }
@@ -34,7 +34,7 @@ public class BrickWallView : MonoBehaviour {
 
     void Clone(int x, int z)
     {
-        GameObject brickWallClone = (GameObject)Instantiate(brickWall, new Vector3(x, 0, z), brickWall.transform.rotation);
+        GameObject brickWallClone = (GameObject)Instantiate(brickWall, new Vector3(x, y, z), brickWall.transform.rotation);
         brickWallClone.SetActive(true);
     }
 }
