@@ -52,8 +52,6 @@ public class ConcreteWallView : MonoBehaviour {
             for (int j = 2; j < tileNumberX; j += 2)
             {
                 Clone(j, i);
-                //GameObject wallTileClone = (GameObject)Instantiate(borderWallTile, new Vector3(j, 0, i), borderWallTile.transform.rotation);
-                //wallTileClone.SetActive(true);
             }
         }
     }
